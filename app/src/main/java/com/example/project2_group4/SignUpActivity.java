@@ -12,42 +12,33 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.project2_group4.databinding.ActivityMainBinding;
+import com.example.project2_group4.databinding.ActivitySignUpBinding;
 
-public class MainActivity extends AppCompatActivity {
 
+public class SignUpActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private ActivitySignUpBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.MainLoginButton.setOnClickListener(new View.OnClickListener() {
+
+        binding.SignUpSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = LoginActivity.mainToLogin(getApplicationContext());
+                Intent intent = MainActivity.SignUpToMain(getApplicationContext());
                 startActivity(intent);
+
             }
         });
-
-        binding.MainSignupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = SignUpActivity.mainToSignUp(getApplicationContext());
-                startActivity(intent);
-            }
-        });
-
-
-
-
     }
 
-    public static Intent SignUpToMain(Context context){
-        Intent intent = new Intent(context, MainActivity.class);
+    public static Intent mainToSignUp(Context context){
+        Intent intent = new Intent(context, SignUpActivity.class);
         return intent;
     }
 }
