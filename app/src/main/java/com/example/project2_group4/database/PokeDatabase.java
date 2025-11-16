@@ -1,0 +1,42 @@
+package com.example.project2_group4.database;
+
+import android.content.Context;
+
+import androidx.annotation.NonNull;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+
+@Database(entities = {User.class}, version = 1)
+public class PokeDatabase extends RoomDatabase {
+    private static PokeDatabase instance;
+
+    public abstract UserDAO userDAO();
+
+    public static synchronized PokeDatabase getInstance(Context context) {
+        if(instance == null) {
+            instance = Room.databaseBuilder(context.getApplicationContext(), PokeDatabase.class, "pokedex_database").fallbackToDestructiveMigration().addCallback(prepopulationCallBack).build();
+        }
+        return instance;
+    }
+
+    private static RoomDatabase.Callback prepopulateCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+
+            new Thread(() -> {
+                UserDAO userDAO = instance.userDAO();
+
+                if(userDAO.getUserCount() == 0) {
+                    User user1 = new User("testuser1", "testuser1", false);
+                    User user2 = new User("admin1", "admin1", true);
+                    userDAO.insertUser(user1);
+                    userDAO.insertUser(user2);
+                }
+            }).start();
+        }
+    };
+
+}
