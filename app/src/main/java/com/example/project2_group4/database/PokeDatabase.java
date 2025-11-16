@@ -7,12 +7,12 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-
+//the end times
 @Database(entities = {User.class}, version = 1)
-public class PokeDatabase extends RoomDatabase {
+public abstract class PokeDatabase extends RoomDatabase {
     private static PokeDatabase instance;
 
-    public abstract UserDAO userDAO();
+    public UserDAO userDAO() {}
 
     public static synchronized PokeDatabase getInstance(Context context) {
         if(instance == null) {
