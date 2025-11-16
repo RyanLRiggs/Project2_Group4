@@ -21,7 +21,7 @@ public abstract class PokeDatabase extends RoomDatabase {
         return instance;
     }
 
-    private static RoomDatabase.Callback prepopulateCallback = new RoomDatabase.Callback() {
+    public static RoomDatabase.Callback prepopulateCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
