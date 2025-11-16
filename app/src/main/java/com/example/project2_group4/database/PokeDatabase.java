@@ -12,11 +12,11 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 public abstract class PokeDatabase extends RoomDatabase {
     private static PokeDatabase instance;
 
-    public UserDAO userDAO() {}
+    public abstract UserDAO userDAO();
 
     public static synchronized PokeDatabase getInstance(Context context) {
         if(instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(), PokeDatabase.class, "pokedex_database").fallbackToDestructiveMigration().addCallback(prepopulationCallBack).build();
+            instance = Room.databaseBuilder(context.getApplicationContext(), PokeDatabase.class, "pokedex_database").fallbackToDestructiveMigration().addCallback(prepopulateCallback).build();
         }
         return instance;
     }
