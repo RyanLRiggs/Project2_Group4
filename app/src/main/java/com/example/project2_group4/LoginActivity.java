@@ -16,6 +16,8 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private AppDatabase db;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,10 @@ public class LoginActivity extends AppCompatActivity {
 
             new Thread(() -> {
                 User user = db.userDAO().validateCredentials(username, password);
+
+
+
+
 
                 runOnUiThread(() -> {
                     if(user != null) {
