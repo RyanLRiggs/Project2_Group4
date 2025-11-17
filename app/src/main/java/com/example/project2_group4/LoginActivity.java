@@ -18,10 +18,8 @@ import java.security.Key;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String PREFERENCE = "POKEDEX_PREFERENCE";
-
-    private static final String KEY = "USERID";
     private ActivityLoginBinding binding;
+
     private PokeDatabase db;
 
     @Override
@@ -38,21 +36,14 @@ public class LoginActivity extends AppCompatActivity {
                 String username = binding.UserNameTextBox.getText().toString();
                 String password = binding.PasswordTextBox.getText().toString();
 
-                new Thread(() -> {
-                    User user = db.userDAO().validateCredentials(username, password);
+                User user = db.userDAO().validateCredentials(username, password);
 
-                    if (!username.isEmpty() && !password.isEmpty()) {
-
-                        SharedPreferences preferences = getSharedPreferences(PREFERENCE, MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putInt(KEY, user.getUserID());
-                        editor.apply();
-                        finish();
-
+                if (!username.isEmpty() && !password.isEmpty()) {
+                    if (username.equals("testuser1") && password.equals("pass")) {
+                        Intent intent = LandingActivity.LoginToLanding(getApplicationContext());
+                        startActivity(intent);
                     }
-                }).start();
-
-
+                }
             }
         });
 
