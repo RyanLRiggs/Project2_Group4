@@ -3,9 +3,9 @@ package com.example.project2_group4;
 import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.testproject.database.entities.AppDatabase;
-import com.example.testproject.database.entities.User;
-import com.example.testproject.databinding.ActivitySignupBinding;
+import com.example.project2_group4.database.entities.AppDatabase;
+import com.example.project2_group4.database.entities.User;
+import com.example.project2_group4.databinding.ActivitySignupBinding;
 
 public class SignUpActivity extends AppCompatActivity{
 

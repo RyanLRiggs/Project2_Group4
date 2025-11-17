@@ -7,9 +7,9 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.testproject.database.entities.AppDatabase;
-import com.example.testproject.database.entities.User;
-import com.example.testproject.databinding.ActivityLandingPageBinding;
+import com.example.project2_group4.database.entities.AppDatabase;
+import com.example.project2_group4.database.entities.User;
+import com.example.project2_group4.databinding.ActivityLandingPageBinding;
 
 public class LandingPage extends AppCompatActivity {
 

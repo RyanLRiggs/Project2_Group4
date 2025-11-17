@@ -3,7 +3,7 @@ package com.example.project2_group4;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.testproject.databinding.ActivityMainBinding;
+import com.example.project2_group4.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
