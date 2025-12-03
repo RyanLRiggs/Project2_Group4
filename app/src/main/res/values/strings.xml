@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Project2_Group4</string>
+    <string name="pokedex">PokeDex</string>
+    <string name="loginMain">Login</string>
+    <string name="signupMain">SignUp</string>
+    <string name="loginLogin">Login</string>
+    <string name="usernameLogin">Username</string>
+    <string name="passwordLogin">Password</string>
+    <string name="pressmeLogin">PressMe!!</string>
+    <string name="signupSignup">SignUp</string>
+    <string name="adminSignup">Admin?</string>
 </resources>
