@@ -7,11 +7,12 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class, Pokemon.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase instance;
 
     public abstract UserDAO userDAO();
+    public abstract PokemonDAO pokemonDAO();
 
     public static synchronized AppDatabase getInstance(Context context) {
         if(instance == null) {
