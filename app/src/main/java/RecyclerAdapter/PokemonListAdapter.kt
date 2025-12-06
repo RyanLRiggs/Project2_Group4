@@ -17,17 +17,18 @@ import res/layout/pokemon_list_item.view.*
 
 class PokemonListAdapter (internal var context: Context, internal var pokemonList: List<Pokemon>):
     RecyclerView.Adapter<PokemonListAdapter.MyViewHolder>(){
-    override fun onCreateViewHolder(
-        val itemView = LayoutInflater.from(context).inflate(R.)
-    ): MyViewHolder {
-        TODO("Not yet implemented")
+    override fun onCreateViewHolder(parent:ViewType: Int): MyViewHolder {
+        val itemView =
+            LayoutInflater.from(context).inflate(R.layout.pokemon_list_item, parent, false)
+        return MyViewHolder(itemView)
     }
 
     override fun onBindViewHolder(
         holder: MyViewHolder,
         position: Int
     ) {
-        TODO("Not yet implemented")
+        Glide.with(context).load(pokemonList[position].img).into(holder.img_pokemon)
+        holder.txt_pokemon.text=pokemonList[position].name
     }
 
     override fun getItemCount(): Int {
@@ -38,7 +39,7 @@ class PokemonListAdapter (internal var context: Context, internal var pokemonLis
         internal var img_pokemon: ImageView
         internal var txt_pokemon: TextView
         init {
-            img_pokemon = itemView.findViewById()
+            img_pokemon = itemView.findViewById<>(R.id.pokemon_image) as ImageView
             txt_pokemon = itemView.findViewById(R.id.pokemon_name) as TextView
         }
     }
