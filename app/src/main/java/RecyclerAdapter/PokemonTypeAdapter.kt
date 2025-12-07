@@ -15,19 +15,18 @@ class PokemonTypeAdapter(
 ) : RecyclerView.Adapter<PokemonTypeAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
+        val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.chip_item, parent, false)
-        return MyViewHolder(itemView)
+        return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val label = typeList[position]
-        holder.chip.text = label
+        val type = typeList[position]
 
-        // TEMP: log or toast to prove the data
-        android.util.Log.d("TypeAdapter", "chip label = $label")
+        holder.chip.text = type
+
+
     }
-
 
     override fun getItemCount(): Int = typeList.size
 

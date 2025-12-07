@@ -18,14 +18,16 @@ class PokemonEvolutionAdapter(
 ) : RecyclerView.Adapter<PokemonEvolutionAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
+        val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.chip_item, parent, false)
-        return MyViewHolder(itemView)
+        return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val evo = evolutionList[position]
-        holder.chip.text = evo.name ?:""
+
+        holder.chip.text = evo.name ?: "Unknown"
+
     }
 
     override fun getItemCount(): Int = evolutionList.size
@@ -45,5 +47,6 @@ class PokemonEvolutionAdapter(
         }
     }
 }
+
 
 
