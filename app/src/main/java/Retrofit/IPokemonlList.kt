@@ -1,9 +1,11 @@
 package Retrofit
 
-import retrofit2.http.GET
+import PokiAPI.Pokedex
 import io.reactivex.Observable
+import retrofit2.http.GET
 
 interface IPokemonlList {
-    @get:GET("pokedex.json")
-    val listpokemon:Obervable<pokedex>
+
+    @GET("pokedex.json")
+    fun getPokemonList(): Observable<Pokedex>
 }

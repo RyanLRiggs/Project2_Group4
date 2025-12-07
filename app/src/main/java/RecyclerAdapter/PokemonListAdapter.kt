@@ -2,45 +2,42 @@ package RecyclerAdapter
 
 import PokiAPI.Pokemon
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.R
 import androidx.recyclerview.widget.RecyclerView
-import com.example.project2_group4.PokemonList
-import res/layout/pokemon_list_item.view.*
+import com.bumptech.glide.Glide
+import com.example.project2_group4.R
 
 
 
-class PokemonListAdapter (internal var context: Context, internal var pokemonList: List<Pokemon>):
-    RecyclerView.Adapter<PokemonListAdapter.MyViewHolder>(){
-    override fun onCreateViewHolder(parent:ViewType: Int): MyViewHolder {
-        val itemView =
-            LayoutInflater.from(context).inflate(R.layout.pokemon_list_item, parent, false)
+class PokemonListAdapter(
+    private val context: Context,
+    private val pokemonList: List<Pokemon>
+) : RecyclerView.Adapter<PokemonListAdapter.MyViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.pokemon_list_item, parent, false)
         return MyViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(
-        holder: MyViewHolder,
-        position: Int
-    ) {
-        Glide.with(context).load(pokemonList[position].img).into(holder.img_pokemon)
-        holder.txt_pokemon.text=pokemonList[position].name
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val pokemon = pokemonList[position]
+
+        holder.txtPokemon.text = pokemon.name
+
+        Glide.with(context)
+            .load(pokemon.img)
+            .into(holder.imgPokemon)
     }
 
-    override fun getItemCount(): Int {
-        return pokemonList.size
-    }
+    override fun getItemCount(): Int = pokemonList.size
 
-    inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        internal var img_pokemon: ImageView
-        internal var txt_pokemon: TextView
-        init {
-            img_pokemon = itemView.findViewById<>(R.id.pokemon_image) as ImageView
-            txt_pokemon = itemView.findViewById(R.id.pokemon_name) as TextView
-        }
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imgPokemon: ImageView = itemView.findViewById(R.id.pokemon_image)
+        val txtPokemon: TextView = itemView.findViewById(R.id.pokemon_name)
     }
 }
