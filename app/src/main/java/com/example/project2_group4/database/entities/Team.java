@@ -1,9 +1,14 @@
 package com.example.project2_group4.database.entities;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-import java.util.Objects;
-
+@Entity(tableName = "teams",
+        foreignKeys = {
+            @ForeignKey(entity = User.class, parentColumns = "userID", childColumns = "userID", onDelete = ForeignKey.CASCADE),
+                @ForeignKey(entity = Pokemon.class, parentColumns = "pokemonID", childColumns = "pokemonID", onDelete = ForeignKey.CASCADE)
+        })
 public class Team {
 
     @PrimaryKey(autoGenerate = true)
