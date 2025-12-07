@@ -4,11 +4,21 @@ package com.example.project2_group4.database.entities;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Delete;
+import java.util.List;
+
 
 @Dao
 public interface UserDAO {
     @Insert
     void insertUser(User user);
+
+    @Query("SELECT * FROM users")
+    List<User> getAllUsers();
+
+    @Delete
+    void deleteUser(User user);
+
 
     @Query("SELECT * FROM users WHERE username = :username AND password = :password LIMIT 1")
     User validateCredentials(String username, String password);
