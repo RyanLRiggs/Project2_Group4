@@ -1,6 +1,7 @@
 package Common
 
 import PokiAPI.Pokemon
+import android.graphics.Color
 import com.example.project2_group4.PokemonList
 
 object Common {
@@ -11,7 +12,7 @@ object Common {
         return null
     }
 
-    fun getColorByType(type: String): Int{
+    fun getColorByType(type: String): Int {
         when (type) {
 
             "Normal" -> return Color.parseColor("#A4A27A")
@@ -59,8 +60,15 @@ object Common {
 
             "Water" -> return Color.parseColor("#658FF1")
             else -> return Color.parseColor("#658FA0")
+        }
     }
-    var pokemonList:List<Pokemon> = ArrayList()
+    var pokemonList: List<Pokemon> = ArrayList()
+
+    @JvmField
     val KEY_ENABLE_HOME = "position"
+
+    @JvmField
     val KEY_NUM_EVOLUTION = "evolution"
+
+
 }

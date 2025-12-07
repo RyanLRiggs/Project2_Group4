@@ -10,13 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.project2_group4.R
-
-
 
 class PokemonListAdapter(
     private val context: Context,
@@ -38,12 +35,13 @@ class PokemonListAdapter(
             .load(pokemon.img)
             .into(holder.imgPokemon)
 
-        holder.setItemClickListener(object: IItemclickListener{
-            override fun onClick(view: View, position: Integer) {
-                //Toast.makeText(context,"Clicked at Pokemon: "+pokemonList[position.toInt()].name, Toast.LENGTH_SHORT) .show()
-
+        holder.setItemClickListener(object : IItemclickListener {
+            override fun onClick(view: View, position: Int) {
                 LocalBroadcastManager.getInstance(context)
-                    .sendBroadcast(Intent(Common.KEY_ENABLE_HOME).putExtra("position"),position)
+                    .sendBroadcast(
+                        Intent(Common.KEY_ENABLE_HOME)
+                            .putExtra("position", position)
+                    )
             }
         })
     }
@@ -54,14 +52,16 @@ class PokemonListAdapter(
         val imgPokemon: ImageView = itemView.findViewById(R.id.pokemon_image)
         val txtPokemon: TextView = itemView.findViewById(R.id.pokemon_name)
 
-        internal var itemClickListener: IItemclickListener?=null
+        private var itemClickListener: IItemclickListener? = null
 
-        fun setItemClickListener(iItemclickListener: IItemclickListener){
-            this.itemClickListener = iItemclickListener
+        fun setItemClickListener(listener: IItemclickListener) {
+            this.itemClickListener = listener
         }
-         init {
-             itemView.setOnClickerListener {view -> itemClickedListener!!.onClick(view,adapterPosition)}
 
-         }
+        init {
+            itemView.setOnClickListener { view ->
+                itemClickListener?.onClick(view, adapterPosition)
+            }
+        }
     }
 }

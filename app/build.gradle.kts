@@ -64,6 +64,10 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
+    implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
     implementation("com.robertlevonyan.view:MaterialChipView:3.0.8")
+
+    implementation("androidx.cardview:cardview:1.0.0")
+
 
 }
