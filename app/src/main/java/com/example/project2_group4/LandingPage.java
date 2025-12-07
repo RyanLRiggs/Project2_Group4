@@ -1,5 +1,7 @@
 package com.example.project2_group4;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +13,9 @@ import com.example.project2_group4.database.entities.User;
 import com.example.project2_group4.databinding.ActivityLandingPageBinding;
 
 public class LandingPage extends AppCompatActivity {
+
+
+
 
     private static final String PREFS_NAME = "POKEDEX_PREFERENCE";
     private static final String KEY_USER_ID = "USERID";

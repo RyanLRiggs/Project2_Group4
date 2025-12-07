@@ -1,12 +1,17 @@
 package RecyclerAdapter
 
+import Common.Common
+import Interface.IItemclickListener
 import PokiAPI.Pokemon
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.project2_group4.R
@@ -32,6 +37,15 @@ class PokemonListAdapter(
         Glide.with(context)
             .load(pokemon.img)
             .into(holder.imgPokemon)
+
+        holder.setItemClickListener(object: IItemclickListener{
+            override fun onClick(view: View, position: Integer) {
+                //Toast.makeText(context,"Clicked at Pokemon: "+pokemonList[position.toInt()].name, Toast.LENGTH_SHORT) .show()
+
+                LocalBroadcastManager.getInstance(context)
+                    .sendBroadcast(Intent(Common.KEY_ENABLE_HOME).putExtra("position"),position)
+            }
+        })
     }
 
     override fun getItemCount(): Int = pokemonList.size
@@ -39,5 +53,15 @@ class PokemonListAdapter(
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgPokemon: ImageView = itemView.findViewById(R.id.pokemon_image)
         val txtPokemon: TextView = itemView.findViewById(R.id.pokemon_name)
+
+        internal var itemClickListener: IItemclickListener?=null
+
+        fun setItemClickListener(iItemclickListener: IItemclickListener){
+            this.itemClickListener = iItemclickListener
+        }
+         init {
+             itemView.setOnClickerListener {view -> itemClickedListener!!.onClick(view,adapterPosition)}
+
+         }
     }
 }
