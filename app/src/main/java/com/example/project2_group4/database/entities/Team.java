@@ -20,18 +20,6 @@ public class Team {
         this.positionInTeam = positionInTeam;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Team team = (Team) o;
-        return teamID == team.teamID && pokemonID == team.pokemonID && userID == team.userID && positionInTeam == team.positionInTeam && Objects.equals(teamName, team.teamName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(teamID, pokemonID, userID, teamName, positionInTeam);
-    }
-
     public int getTeamID() {
         return teamID;
     }
