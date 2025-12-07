@@ -2,6 +2,7 @@ package com.example.project2_group4
 
 import Common.Common
 import PokiAPI.Pokemon
+import RecyclerAdapter.PokemonEvolutionAdapter
 import RecyclerAdapter.PokemonTypeAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -90,6 +91,16 @@ class PokemonDetail : Fragment() {
 
         val weaknessAdapter = PokemonTypeAdapter(activity!!,pokemon.weaknesses!!)
         recycler_weakness.adapter = weaknessAdapter
+
+        if(pokemon.prev_evolution != null) {
+            val prevEvolution = PokemonEvolutionAdapter(activity!!, pokemon.prev_evolution)
+            recycler_prev_evolution.adapter = prevEvolution
+        }
+        if(pokemon.next_evolution != null) {
+            val nextEvolution = PokemonEvolutionAdapter(activity!!, pokemon.next_evolution)
+            recycler_next_evolution.adapter = nextEvolution
+        }
+
 
     }
 }

@@ -62,4 +62,5 @@ object Common {
     }
     var pokemonList:List<Pokemon> = ArrayList()
     val KEY_ENABLE_HOME = "position"
+    val KEY_NUM_EVOLUTION = "evolution"
 }
