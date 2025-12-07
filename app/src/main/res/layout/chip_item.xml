@@ -8,12 +8,11 @@
 
     <com.robertlevonyan.views.chip.Chip
         android:id="@+id/chip"
-        app:mcv_textColor="@android:color/white"
-        android:text="@string/chip_text"
-        app:mcv_backgroundColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         >
+        android:text="@string/chip_text"
+        app:mcv_backgroundColor="@color/colorPrimary"
+        app:mcv_textColor="@android:color/white">
 
     </com.robertlevonyan.views.chip.Chip>
 
