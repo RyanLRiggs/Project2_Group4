@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -53,6 +54,13 @@ public class LandingPage extends AppCompatActivity {
                 runOnUiThread(() -> {
                     if (getSupportActionBar() != null) {
                         getSupportActionBar().setTitle("Welcome, " + user.getUsername());
+                    }
+                    if (user.isAdmin()) {
+                        binding.btnAdmin.setVisibility(View.VISIBLE);
+                        binding.btnAdmin.setOnClickListener(v -> {
+                            Intent intent = new Intent(LandingPage.this, AdminActivity.class);
+                            startActivity(intent);
+                        });
                     }
                 });
             }
