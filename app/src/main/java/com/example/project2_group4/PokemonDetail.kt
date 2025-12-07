@@ -7,6 +7,7 @@ import RecyclerAdapter.PokemonTypeAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -28,6 +29,11 @@ class PokemonDetail : Fragment() {
     lateinit var recycler_prev_evolution: RecyclerView
     lateinit var recycler_next_evolution: RecyclerView
 
+
+
+
+
+
     companion object {
         internal var instance: PokemonDetail? = null
 
@@ -43,6 +49,12 @@ class PokemonDetail : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val itemView = inflater.inflate(R.layout.fragment_pokemon_detail, container, false)
+
+        val backImage: ImageView = itemView.findViewById(R.id.img_back)
+        backImage.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+
 
         val args = requireArguments()
         val pokemon: Pokemon? = if (args.getString("num") == null) {
