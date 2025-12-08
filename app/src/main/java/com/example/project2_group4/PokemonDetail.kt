@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import android.util.Log
 import android.content.Context
 import android.widget.Button
 import android.widget.Toast
@@ -113,10 +114,14 @@ class PokemonDetail : Fragment() {
         pokemon_height.text = "Height: ${pokemon.height}"
         pokemon_weight.text = "Weight: ${pokemon.weight}"
 
+        Log.d("PokemonDetail", "Types: ${pokemon.type}, Weaknesses: ${pokemon.weaknesses}")
         val typeAdapter = PokemonTypeAdapter(requireContext(), pokemon.type ?: emptyList())
+        Log.d("PokemonDetail", "Setting type adapter with types: ${pokemon.type}")
         recycler_type.adapter = typeAdapter
 
+
         val weaknessAdapter = PokemonTypeAdapter(requireContext(), pokemon.weaknesses ?: emptyList())
+        Log.d("PokemonDetail", "Setting weakness adapter with weaknesses: ${pokemon.weaknesses}")
         recycler_weakness.adapter = weaknessAdapter
 
         if (pokemon.prev_evolution != null) {

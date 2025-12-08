@@ -15,14 +15,16 @@
             android:id="@+id/img_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_margin="12dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_margin="12dp"
             android:background="@android:color/transparent"
             android:clickable="true"
-            android:focusable="true"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_launcher_background" />
+            android:focusable="true"
+            android:src="@drawable/ic_launcher_background"
+            android:visibility="gone"
+            tools:visibility="gone" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
@@ -91,7 +93,8 @@
                     android:id="@+id/recycler_type"
                     android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -105,34 +108,45 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_weakness"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Prev Evolution"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:visibility="gone"
+                    tools:visibility="gone" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_prev_evolution"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="40dp"
+                    android:visibility="gone"
+                    tools:visibility="gone">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <TextView
-                    android:text="Next Evolution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:text="Next Evolution"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:visibility="gone"
+                    tools:visibility="gone" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_next_evolution"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="40dp"
+                    android:visibility="gone"
+                    tools:visibility="gone">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
