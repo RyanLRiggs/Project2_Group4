@@ -87,33 +87,6 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
 
-                <TextView
-                    android:text="Prev Evolution"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_prev_evolution"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:text="Next Evolution"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_next_evolution"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
