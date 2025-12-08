@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class FavoritesManager {
 
-    private static final String PREF_NAME = "favorites_prefs";
+    private static final String PREF_NAME = "favorites_preferences";
     private static final String KEY_FAVORITES = "favorite_pokemon";
 
     public static void addFavorite(Context context, String pokemonName) {
