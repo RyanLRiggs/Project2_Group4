@@ -28,12 +28,11 @@ public class FavoritesActivity extends AppCompatActivity {
                 new ArrayList<>(FavoritesManager.getFavorites(this));
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
                 favoriteList
         );
-
 
         binding.favoritesListView.setAdapter(adapter);
     }
