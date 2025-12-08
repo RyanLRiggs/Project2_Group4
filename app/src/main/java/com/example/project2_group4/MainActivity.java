@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.project2_group4.databinding.ActivityMainBinding;
+import com.example.project2_group4.factory.IntentFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,13 +18,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.loginButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
+            startActivity(IntentFactory.createLoginActivity(this));
         });
 
         binding.createAccountButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-            startActivity(intent);
+            startActivity(IntentFactory.createSignUpActivity(this));
         });
     }
 }

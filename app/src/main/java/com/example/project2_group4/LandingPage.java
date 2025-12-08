@@ -14,6 +14,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.example.project2_group4.database.entities.AppDatabase;
 import com.example.project2_group4.database.entities.User;
 import com.example.project2_group4.databinding.ActivityLandingPageBinding;
+import com.example.project2_group4.factory.IntentFactory;
 
 import Common.Common;
 
@@ -42,8 +43,7 @@ public class LandingPage extends AppCompatActivity {
         int userId = prefs.getInt(KEY_USER_ID, -1);
 
         if (userId == -1) {
-            Intent intent = new Intent(LandingPage.this, MainActivity.class);
-            startActivity(intent);
+            startActivity(IntentFactory.createMainActivity(this));
             finish();
             return;
         }
@@ -58,8 +58,7 @@ public class LandingPage extends AppCompatActivity {
                     if (user.isAdmin()) {
                         binding.btnAdmin.setVisibility(View.VISIBLE);
                         binding.btnAdmin.setOnClickListener(v -> {
-                            Intent intent = new Intent(LandingPage.this, AdminActivity.class);
-                            startActivity(intent);
+                            startActivity(IntentFactory.createAdminActivity(this));
                         });
                     }
                 });

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.project2_group4.database.entities.AppDatabase;
 import com.example.project2_group4.database.entities.User;
 import com.example.project2_group4.databinding.ActivityLoginBinding;
+import com.example.project2_group4.factory.IntentFactory;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String PREFERENCE = "POKEDEX_PREFERENCE";
@@ -53,8 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(this, "Login successful! Welcome " + user.getUsername(), Toast.LENGTH_LONG).show();
 
                         // Go back to MainActivity (or wherever you want)
-                        Intent intent = new Intent(LoginActivity.this, LandingPage.class);
-                        startActivity(intent);
+                        startActivity(IntentFactory.createLandingPageActivity(this));
                         finish();
                     } else {
                         Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
