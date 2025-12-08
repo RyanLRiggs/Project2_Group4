@@ -14,21 +14,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestProject"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".AdminActivity"
-            android:exported="false" />
+
+        <!-- Admin page MUST be declared -->
+        <activity android:name=".AdminActivity" />
+
+        <!-- Team screen -->
+        <activity android:name=".TeamActivity" />
+
+        <!-- Normal flow activities -->
+        <activity android:name=".LandingPage" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".LoginActivity" />
+
+        <!-- Launcher -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".LandingPage" />
+
     </application>
 
 </manifest>
+

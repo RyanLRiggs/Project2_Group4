@@ -7,6 +7,8 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import java.util.List;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -48,6 +50,11 @@ public class LandingPage extends AppCompatActivity {
             return;
         }
 
+        binding.btnViewTeam.setOnClickListener(v -> {
+            Intent intent = new Intent(LandingPage.this, TeamActivity.class);
+            startActivity(intent);
+        });
+
         new Thread(() -> {
             User user = db.userDAO().getUserByID(userId);
             if (user != null) {
@@ -65,6 +72,8 @@ public class LandingPage extends AppCompatActivity {
                 });
             }
         }).start();
+
+
 
         setupBroadcastReceivers();
     }
