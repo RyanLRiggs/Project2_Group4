@@ -11,9 +11,10 @@
         android:id="@+id/chip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
         android:text="Type"
+        android:visibility="visible"
         app:mcv_backgroundColor="@color/colorPrimary"
+        android:textStyle="bold"
         app:mcv_textColor="@android:color/white"
         tools:visibility="visible">
 
