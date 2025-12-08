@@ -1,6 +1,7 @@
 package RecyclerAdapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +23,7 @@ class PokemonTypeAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val type = typeList[position]
-
+        Log.d("PokemonTypeAdapter", "Binding type at position $position: $type")
         holder.chip.text = type
 
 
