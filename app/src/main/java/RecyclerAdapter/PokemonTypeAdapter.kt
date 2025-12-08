@@ -1,6 +1,8 @@
 package RecyclerAdapter
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +29,12 @@ class PokemonTypeAdapter(
         if (type.isEmpty()) {
             Log.w("PokemonTypeAdapter", "Type is empty for position: $position")
         }
-        holder.chip.text = type
+        holder.chip.setText(type)
+//        holder.chip.chipBackgroundColor
+//        holder.chip.chipBackgroundColor = ColorStateList.valueOf(Common.Common.getColorByType(type))
+//        int parsedColorInt = Color.parseColor(Common.Common.getColorByType(type))
+        holder.chip.setBackgroundColor(Common.Common.getColorByType(type))
+
     }
 
     override fun getItemCount(): Int = typeList.size
@@ -35,11 +42,11 @@ class PokemonTypeAdapter(
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val chip: Chip = itemView.findViewById(R.id.chip)
 
-        init {
-            chip.setOnClickListener {
-                Toast.makeText(context, "Clicked: ${chip.text}", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        init {
+//            chip.setOnClickListener {
+//                Toast.makeText(context, "Clicked: ${chip.text}", Toast.LENGTH_SHORT).show()
+//            }
+//        }
     }
 }
 
