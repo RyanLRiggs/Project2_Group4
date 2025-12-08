@@ -15,14 +15,16 @@
             android:id="@+id/img_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_margin="12dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_margin="12dp"
             android:background="@android:color/transparent"
             android:clickable="true"
-            android:focusable="true"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_launcher_background" />
+            android:focusable="true"
+            android:src="@drawable/ic_launcher_background"
+            android:visibility="gone"
+            tools:visibility="gone" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
