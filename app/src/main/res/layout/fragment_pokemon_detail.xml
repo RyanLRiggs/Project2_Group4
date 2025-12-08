@@ -78,7 +78,7 @@
                     android:id="@+id/btn_toggle_team"
                     android:layout_width="115dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="0dp"
                     android:layout_marginTop="8dp"
                     android:text="Add to Team" />
 
