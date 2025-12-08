@@ -25,7 +25,6 @@ class PokemonTypeAdapter(
 
         holder.chip.text = type
 
-
     }
 
     override fun getItemCount(): Int = typeList.size
