@@ -19,3 +19,6 @@ public class FavoritesActivity extends AppCompatActivity {
         setContentView(view);
     }
 }
+public static Intent landingToFavorites(Context context){
+    return new Intent(context, FavoritesActivity.class);
+}
