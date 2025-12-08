@@ -1,6 +1,5 @@
 package com.example.project2_group4.database.entities;
 
-
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -12,24 +11,20 @@ import java.util.List;
 public interface TeamDAO {
 
     @Insert
-    void insertTeamMember(TeamData team);
+    void insertTeamMember(TeamData teamMember);
 
     @Delete
-    void deleteTeamMember(TeamData team);
+    void deleteTeamMember(TeamData teamMember);
 
-    @Query("SELECT * FROM teams WHERE userID = :userID AND teamName = :teamName")
-    List<TeamData> getTeamMembers(int userID, String teamName);
+    @Query("SELECT * FROM teams WHERE userID = :userId")
+    List<TeamData> getTeamForUser(int userId);
 
-    @Query("SELECT DISTINCT teamName FROM teams WHERE userID = :userID")
-    List<String> getTeamName(int userID);
+    @Query("SELECT pokemonName FROM teams WHERE userID = :userId")
+    List<String> getTeamNamesForUser(int userId);
 
-    @Query("DELETE FROM teams WHERE userID = :userID AND pokemonID")
-    void removePokemonFromTeam(int userID, int pokemonID);
+    @Query("SELECT COUNT(*) FROM teams WHERE userID = :userId AND pokemonID = :pokemonId")
+    int isPokemonInTeam(int userId, int pokemonId);
 
-    @Query("DELETE FROM teams WHERE userID = :userID AND teamID = :teamID")
-    void removeTeam(int userID, int teamID);
-
-    @Query("SELECT COUNT(*) FROM teams WHERE userID = :userID AND teamName = :teamName")
-    int getTeamSize(int userID, int teamName);
-
+    @Query("DELETE FROM teams WHERE userID = :userId AND pokemonID = :pokemonId")
+    void removePokemonFromTeam(int userId, int pokemonId);
 }

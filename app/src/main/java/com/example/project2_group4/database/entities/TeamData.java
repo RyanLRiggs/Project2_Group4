@@ -1,45 +1,48 @@
 package com.example.project2_group4.database.entities;
 
-
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "teams",
+import static androidx.room.ForeignKey.CASCADE;
+
+@Entity(
+        tableName = "teams",
         foreignKeys = {
-                @ForeignKey(entity = User.class, parentColumns = "userID", childColumns = "userID", onDelete = ForeignKey.CASCADE),
-                @ForeignKey(entity = PokemonData.class, parentColumns = "pokemonID", childColumns = "pokemonID", onDelete = ForeignKey.CASCADE)
-        })
+                @ForeignKey(
+                        entity = User.class,
+                        parentColumns = "userID",
+                        childColumns = "userID",
+                        onDelete = CASCADE
+                )
+        },
+        indices = {
+                @Index("userID"),
+                @Index(value = {"userID", "pokemonID"}, unique = true)
+        }
+)
 public class TeamData {
 
     @PrimaryKey(autoGenerate = true)
-    private int teamID;
-    private int pokemonID;
+    private int id;
+
     private int userID;
-    private String teamName;
-    private int positionInTeam;
+    private int pokemonID;
+    private String pokemonName;
 
-    public TeamData(int pokemonID, int userID, String teamName, int positionInTeam) {
-        this.pokemonID = pokemonID;
+    public TeamData(int userID, int pokemonID, String pokemonName) {
         this.userID = userID;
-        this.teamName = teamName;
-        this.positionInTeam = positionInTeam;
-    }
-
-    public int getTeamID() {
-        return teamID;
-    }
-
-    public void setTeamID(int teamID) {
-        this.teamID = teamID;
-    }
-
-    public int getPokemonID() {
-        return pokemonID;
-    }
-
-    public void setPokemonID(int pokemonID) {
         this.pokemonID = pokemonID;
+        this.pokemonName = pokemonName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getUserID() {
@@ -50,19 +53,20 @@ public class TeamData {
         this.userID = userID;
     }
 
-    public String getTeamName() {
-        return teamName;
+    public int getPokemonID() {
+        return pokemonID;
     }
 
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
+    public void setPokemonID(int pokemonID) {
+        this.pokemonID = pokemonID;
     }
 
-    public int getPositionInTeam() {
-        return positionInTeam;
+    public String getPokemonName() {
+        return pokemonName;
     }
 
-    public void setPositionInTeam(int positionInTeam) {
-        this.positionInTeam = positionInTeam;
+    public void setPokemonName(String pokemonName) {
+        this.pokemonName = pokemonName;
     }
 }
+

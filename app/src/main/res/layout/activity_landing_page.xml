@@ -24,6 +24,13 @@
         android:visibility="gone"
         android:layout_margin="8dp" />
 
+    <Button
+        android:id="@+id/btnViewTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="View Team" />
+
     <fragment
         android:name="com.example.project2_group4.PokemonList"
         android:id="@+id/list_pokemon_fragment"

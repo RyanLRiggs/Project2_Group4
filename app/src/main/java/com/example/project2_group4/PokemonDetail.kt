@@ -15,6 +15,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import android.content.Context
+import android.widget.Button
+import android.widget.Toast
+import com.example.project2_group4.database.entities.AppDatabase
+import com.example.project2_group4.database.entities.TeamData
+
 
 
 class PokemonDetail : Fragment() {
@@ -28,6 +34,8 @@ class PokemonDetail : Fragment() {
     lateinit var recycler_weakness: RecyclerView
     lateinit var recycler_prev_evolution: RecyclerView
     lateinit var recycler_next_evolution: RecyclerView
+
+    private lateinit var btnToggleTeam: Button
 
 
 
@@ -88,6 +96,9 @@ class PokemonDetail : Fragment() {
         recycler_weakness.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
+        btnToggleTeam = itemView.findViewById(R.id.btn_toggle_team)
+        setupTeamButton(pokemon, args)
+
         setDetailPokemon(pokemon)
 
         return itemView
@@ -117,4 +128,82 @@ class PokemonDetail : Fragment() {
             recycler_next_evolution.adapter = nextEvolution
         }
     }
+
+    private fun getCurrentUserId(): Int {
+        val prefs = requireContext().getSharedPreferences("POKEDEX_PREFERENCE", Context.MODE_PRIVATE)
+        return prefs.getInt("USERID", -1)
+    }
+
+    private fun getPokemonIdForDb(pokemon: Pokemon?, args: Bundle): Int? {
+        pokemon ?: return null
+
+        pokemon.num?.toIntOrNull()?.let { return it }
+
+        val position = args.getInt("position", -1)
+        if (position >= 0) return position + 1
+
+        return null
+    }
+
+    private fun setupTeamButton(pokemon: Pokemon?, args: Bundle) {
+        if (pokemon == null) {
+            btnToggleTeam.visibility = View.GONE
+            return
+        }
+
+        val userId = getCurrentUserId()
+        if (userId == -1) {
+            btnToggleTeam.visibility = View.GONE
+            return
+        }
+
+        val pokemonId = getPokemonIdForDb(pokemon, args) ?: run {
+            btnToggleTeam.visibility = View.GONE
+            return
+        }
+
+        val db = AppDatabase.getInstance(requireContext())
+
+        Thread {
+            val isInTeam = db.teamDAO().isPokemonInTeam(userId, pokemonId) > 0
+
+            requireActivity().runOnUiThread {
+                btnToggleTeam.text = if (isInTeam) "Remove from Team" else "Add to Team"
+
+                btnToggleTeam.setOnClickListener {
+                    Thread {
+                        val currentlyInTeam =
+                            db.teamDAO().isPokemonInTeam(userId, pokemonId) > 0
+
+                        if (currentlyInTeam) {
+                            db.teamDAO().removePokemonFromTeam(userId, pokemonId)
+                            requireActivity().runOnUiThread {
+                                btnToggleTeam.text = "Add to Team"
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Removed from your team",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else {
+                            val name = pokemon.name ?: "Unknown"
+                            val teamRow = TeamData(userId, pokemonId, name)
+                            db.teamDAO().insertTeamMember(teamRow)
+
+                            requireActivity().runOnUiThread {
+                                btnToggleTeam.text = "Remove from Team"
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Added to your team",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    }.start()
+                }
+            }
+        }.start()
+    }
+
+
 }
