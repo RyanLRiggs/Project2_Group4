@@ -30,11 +30,7 @@ class PokemonTypeAdapter(
             Log.w("PokemonTypeAdapter", "Type is empty for position: $position")
         }
         holder.chip.setText(type)
-//        holder.chip.chipBackgroundColor
-//        holder.chip.chipBackgroundColor = ColorStateList.valueOf(Common.Common.getColorByType(type))
-//        int parsedColorInt = Color.parseColor(Common.Common.getColorByType(type))
-        holder.chip.setBackgroundColor(Common.Common.getColorByType(type))
-
+        holder.chip.chipBackgroundColor = Common.Common.getColorByType(type)
     }
 
     override fun getItemCount(): Int = typeList.size
