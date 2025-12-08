@@ -24,9 +24,10 @@ class PokemonTypeAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val type = typeList[position]
         Log.d("PokemonTypeAdapter", "Binding type at position $position: $type")
+        if (type.isEmpty()) {
+            Log.w("PokemonTypeAdapter", "Type is empty for position: $position")
+        }
         holder.chip.text = type
-
-
     }
 
     override fun getItemCount(): Int = typeList.size
