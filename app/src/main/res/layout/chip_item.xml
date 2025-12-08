@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:mcv_backgroundColor="@color/colorPrimary"
-        app:mcv_textColor="@android:color/black"
+        app:mcv_textColor="@android:color/white"
         tools:visibility="visible">
 
     </com.robertlevonyan.views.chip.Chip>
